@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* -------------------------------------------------------------------------- */
+/* Global base styles + dark-theme background                                 */
+/* -------------------------------------------------------------------------- */
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-950 text-slate-200 font-sans antialiased;
+    /* Layered radial glows for depth behind the content. */
+    background-image:
+      radial-gradient(60rem 40rem at 80% -10%, rgba(59, 130, 246, 0.12), transparent),
+      radial-gradient(50rem 40rem at -10% 20%, rgba(37, 99, 235, 0.1), transparent);
+    background-attachment: fixed;
+  }
+
+  /* Nicer scrollbar for the dark theme (WebKit). */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-slate-700;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-600;
+  }
+}

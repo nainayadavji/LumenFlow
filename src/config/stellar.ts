@@ -1,0 +1,31 @@
+/**
+ * Centralised network configuration.
+ *
+ * Values are read from Vite environment variables (see `.env.example`) with
+ * sensible Testnet fallbacks so the app runs out of the box even without a
+ * local `.env` file. This project is intentionally **Testnet only**.
+ */
+
+export const STELLAR_CONFIG = {
+  horizonUrl:
+    import.meta.env.VITE_HORIZON_URL ?? 'https://horizon-testnet.stellar.org',
+  networkPassphrase:
+    import.meta.env.VITE_NETWORK_PASSPHRASE ??
+    'Test SDF Network ; September 2015',
+  explorerUrl:
+    import.meta.env.VITE_EXPLORER_URL ??
+    'https://stellar.expert/explorer/testnet',
+  friendbotUrl:
+    import.meta.env.VITE_FRIENDBOT_URL ?? 'https://friendbot.stellar.org',
+} as const;
+
+/** Human-friendly network label shown in the UI. */
+export const NETWORK_LABEL = 'Stellar Testnet';
+
+/** Build a Stellar Expert explorer link for a given transaction hash. */
+export const explorerTxUrl = (hash: string): string =>
+  `${STELLAR_CONFIG.explorerUrl}/tx/${hash}`;
+
+/** Build a Stellar Expert explorer link for a given account address. */
+export const explorerAccountUrl = (address: string): string =>
+  `${STELLAR_CONFIG.explorerUrl}/account/${address}`;
