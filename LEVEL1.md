@@ -1,4 +1,4 @@
-﻿# 🥋 Rise In · Level 1 — White Belt Submission
+# 🥋 Rise In · Level 1 — White Belt Submission
 
 **Project:** LumenLink POS — Web3 Point-of-Sale Register  
 **Developer:** Naina Yadav  
@@ -60,12 +60,12 @@ Confirms the transaction is **Successful** on Stellar Testnet — Ledger 3757495
 
 ## 🛠️ How to Run
 
-`ash
+```bash
 git clone https://github.com/nainayadavji/LumenFlow.git
 cd LumenFlow
 npm install
 npm run dev
-`
+```
 
 Open http://localhost:5173 in your browser with the **Freighter** extension set to **Testnet**.
 
