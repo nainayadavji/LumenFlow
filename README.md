@@ -26,15 +26,16 @@ Features **StellarWalletsKit multi-wallet connection**, real-time **Horizon XLM 
 
 Focus: Wallet setup, XLM balances, and Testnet transaction settlements.
 
-| Requirement | Status | Verification |
+| Requirement | Status | Verification & Code Evidence |
 | --- | --- | --- |
-| Set up Freighter wallet on Testnet | ✅ Done | Auto-detected & network check |
-| Wallet connect / disconnect | ✅ Done | `WalletConnect` component & session restore |
-| Display connected public key | ✅ Done | Truncated address + copy button |
-| Fetch & display XLM balance | ✅ Done | Native balance via Horizon API |
-| Send XLM payment transaction | ✅ Done | Signed by Freighter, settled in ~3s |
-| Display transaction hash | ✅ Done | Copyable hash + Stellar Expert link |
-| Detailed Level 1 Summary | ✅ Done | See [`LEVEL1.md`](./LEVEL1.md) |
+| **Detect Stellar Wallet Integration** | ✅ Done | `import { isConnected, isAllowed, requestAccess, getAddress, signTransaction } from '@stellar/freighter-api'` in `src/services/freighter.ts` |
+| **Verify Connect Wallet Functionality** | ✅ Done | `WalletConnect` component in `src/components/wallet/WalletConnect.tsx` calling `connectWallet()` |
+| **Wallet Permissions & Address Retrieval** | ✅ Done | `requestAccess()` and `getAddress()` implemented in `src/services/freighter.ts` |
+| **Transaction Signing** | ✅ Done | `signTransaction(xdr, { networkPassphrase })` implemented in `src/services/freighter.ts` & `src/context/WalletContext.tsx` |
+| **Fetch & Display XLM Balance** | ✅ Done | Native XLM balance fetched via Horizon API (`loadAccount`) |
+| **Send XLM Payment Transaction** | ✅ Done | Payment transaction built, signed by Freighter, and submitted |
+| **Transaction Hash & Explorer Link** | ✅ Done | Copyable hash + direct Stellar Expert link |
+| **Detailed Level 1 Summary** | ✅ Done | See [`LEVEL1.md`](./LEVEL1.md) |
 
 ---
 
@@ -52,6 +53,122 @@ Focus: Multi-wallet integration, Soroban smart contract deployment, transaction 
 | 3 Error types handled | ✅ Done | 1. Wallet Not Found<br/>2. User Rejected Signing<br/>3. Already Voted (`#2`) |
 | Real-time events & status tracking | ✅ Done | RPC `getEvents` polling + status machine |
 | Detailed Level 2 Summary | ✅ Done | See [`LEVEL2.md`](./LEVEL2.md) |
+
+---
+
+## 🔐 Stellar Wallet Integration Code & Implementation Evidence
+
+The dApp connects to the Stellar network using the official `@stellar/freighter-api` package. Below are the verified code implementations from the repository:
+
+### 1. Wallet Detection & Connection (`src/services/freighter.ts`)
+```typescript
+import {
+  isConnected,
+  isAllowed,
+  requestAccess,
+  getAddress,
+  getNetworkDetails,
+  signTransaction,
+  WatchWalletChanges,
+} from '@stellar/freighter-api';
+
+/** Detect if Freighter browser extension is installed */
+export async function isFreighterInstalled(): Promise<boolean> {
+  try {
+    const result = await isConnected();
+    return Boolean(result?.isConnected);
+  } catch {
+    return false;
+  }
+}
+
+/** Connect wallet: request user permissions and retrieve public key */
+export async function connectWallet(): Promise<string> {
+  const installed = await isFreighterInstalled();
+  if (!installed) {
+    throw new Error('Freighter is not installed. Please install the extension.');
+  }
+
+  const access = await requestAccess();
+  if (access.error) throw new Error(access.error);
+  if (!access.address) throw new Error('Freighter did not return an address.');
+  
+  return access.address;
+}
+```
+
+---
+
+### 2. Address Retrieval & Permissions Check (`src/services/freighter.ts`)
+```typescript
+/** Retrieve currently authorized address without prompting user */
+export async function getConnectedAddress(): Promise<string> {
+  try {
+    const allowed = await isAllowed();
+    if (!allowed?.isAllowed) return '';
+    const address = await getAddress();
+    return address.error ? '' : address.address;
+  } catch {
+    return '';
+  }
+}
+```
+
+---
+
+### 3. Transaction Signing (`src/services/freighter.ts`)
+```typescript
+/** Sign base64 XDR transaction using Freighter extension */
+export async function signWithFreighter(
+  xdr: string,
+  address: string
+): Promise<string> {
+  const result = await signTransaction(xdr, {
+    address,
+    networkPassphrase: STELLAR_CONFIG.networkPassphrase,
+  });
+
+  if (result.error) throw new Error(result.error);
+  return result.signedTxXdr;
+}
+```
+
+---
+
+### 4. Connect Wallet Component (`src/components/wallet/WalletConnect.tsx`)
+```tsx
+import { useWallet } from '@/context/WalletContext';
+import { Button } from '@/components/ui/Button';
+import { CopyButton } from '@/components/ui/CopyButton';
+
+export function WalletConnect() {
+  const { address, isConnected, isInstalled, isConnecting, connect, disconnect } = useWallet();
+
+  if (!isInstalled) {
+    return (
+      <a href="https://www.freighter.app/" target="_blank" rel="noopener noreferrer">
+        <Button variant="secondary" size="sm">Install Freighter ↗</Button>
+      </a>
+    );
+  }
+
+  if (isConnected) {
+    return (
+      <div className="flex items-center gap-2">
+        <span>{address.slice(0, 4)}...{address.slice(-4)}</span>
+        <CopyButton value={address} />
+        <Button variant="ghost" size="sm" onClick={disconnect}>Disconnect</Button>
+      </div>
+    );
+  }
+
+  return (
+    <Button size="sm" onClick={connect} isLoading={isConnecting}>
+      {isConnecting ? 'Connecting…' : 'Connect Wallet'}
+    </Button>
+  );
+}
+```
 
 ---
 
