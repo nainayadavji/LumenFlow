@@ -1,17 +1,18 @@
 # 🛒 LumenLink POS & Soroban Live Poll
 
-> **Rise In · Stellar Journey to Mastery — Full Submission (Level 1 White Belt & Level 2 Yellow Belt)**
+> **Rise In · Stellar Journey to Mastery — Full Submission (Level 1 White Belt, Level 2 Yellow Belt & Level 3 Orange Belt)**
 
 A clean, premium **Web3 Point-of-Sale Register & Soroban Governance Poll dApp** built on the **Stellar Testnet**.
-Features **StellarWalletsKit multi-wallet connection**, real-time **Horizon XLM payment settlements**, and an **on-chain Soroban smart contract poll** with real-time event streaming via Soroban RPC. Built with **React 18 + Vite 5 + TypeScript + Tailwind CSS**, **Soroban SDK (Rust)**, and `@stellar/stellar-sdk`.
+Features **StellarWalletsKit multi-wallet connection**, real-time **Horizon XLM payment settlements**, an **on-chain Soroban smart contract poll** with real-time event streaming via Soroban RPC, **GitHub Actions CI/CD pipeline**, and **mobile-responsive UI**. Built with **React 18 + Vite 5 + TypeScript + Tailwind CSS**, **Soroban SDK (Rust)**, and `@stellar/stellar-sdk`.
 
 - 🔗 **GitHub Repository:** [github.com/nainayadavji/LumenFlow](https://github.com/nainayadavji/LumenFlow)
 - 🔮 **Deployed Soroban Contract ID:** `CDZCTLFFN5SM6UC3Z46UPHV6BI2GYVJ65GCAOHNVSCMGBWX4GYD4UZXF`
 - ⚡ **Sample Vote Tx Hash:** [`962277ffe98c620f83bfbd5c165466a0dc1105a97b165c287145166b6f4e2270`](https://stellar.expert/explorer/testnet/tx/962277ffe98c620f83bfbd5c165466a0dc1105a97b165c287145166b6f4e2270)
-- 🥋 **Level 1 Readme:** [`LEVEL1.md`](./LEVEL1.md) | 🟡 **Level 2 Readme:** [`LEVEL2.md`](./LEVEL2.md)
+- 🥋 **Level 1:** [`LEVEL1.md`](./LEVEL1.md) | 🟡 **Level 2:** [`LEVEL2.md`](./LEVEL2.md) | 🟠 **Level 3:** [`LEVEL3.md`](./LEVEL3.md)
 
 ![Stellar](https://img.shields.io/badge/Stellar-Testnet-3b82f6)
 ![Soroban](https://img.shields.io/badge/Soroban-Smart_Contract-purple)
+![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-green)
 ![React](https://img.shields.io/badge/React-18-149eca)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6)
 ![Vite](https://img.shields.io/badge/Vite-5-646cff)
@@ -53,6 +54,25 @@ Focus: Multi-wallet integration, Soroban smart contract deployment, transaction 
 | 3 Error types handled | ✅ Done | 1. Wallet Not Found<br/>2. User Rejected Signing<br/>3. Already Voted (`#2`) |
 | Real-time events & status tracking | ✅ Done | RPC `getEvents` polling + status machine |
 | Detailed Level 2 Summary | ✅ Done | See [`LEVEL2.md`](./LEVEL2.md) |
+
+---
+
+### 🟠 Level 3 — Orange Belt (Completed)
+
+Focus: Advanced Smart Contracts + Production-Ready dApps ($50 Prize Category).
+
+| Requirement | Status | Verification |
+| --- | --- | --- |
+| **Advanced smart contract development** | ✅ Done | Soroban poll contract with storage TTL extension & event emission |
+| **Inter-contract communication** | ✅ Done | Inter-contract token payment integration (SAC SEP-41 contract invocation) |
+| **CI/CD pipeline setup** | ✅ Done | Automated GitHub Actions `.github/workflows/ci.yml` |
+| **Smart contract deployment workflow** | ✅ Done | Deployment script `scripts/deploy_contract.sh` & `docs/DEPLOYMENT.md` |
+| **Mobile responsive frontend** | ✅ Done | Mobile drawer & touch-optimized buttons (`public/screenshots/mobile-responsive.png`) |
+| **Error handling & loading states** | ✅ Done | Full status state machine, shimmer `Skeleton`, toast alerts |
+| **Writing tests for contracts** | ✅ Done | **8 passing unit tests** (`cargo test`) in `contracts/poll-contract/src/test.rs` |
+| **Screenshot: CI/CD Pipeline Running** | ✅ Done | `public/screenshots/ci-cd-pipeline.png` |
+| **Screenshot: 3+ Passing Tests Output** | ✅ Done | `public/screenshots/cargo-test-output.png` |
+| **Detailed Level 3 Summary** | ✅ Done | See [`LEVEL3.md`](./LEVEL3.md) |
 
 ---
 
@@ -216,6 +236,19 @@ export function WalletConnect() {
 
 #### 6 — Real-Time Soroban Event Stream
 ![Live Events Stream](./public/screenshots/live-events-stream.png)
+
+---
+
+### 🟠 Level 3 — Orange Belt Screenshots
+
+#### 7 — Mobile Responsive UI View
+![Mobile Responsive UI](./public/screenshots/mobile-responsive.png)
+
+#### 8 — GitHub Actions CI/CD Pipeline Running
+![CI/CD Pipeline Running](./public/screenshots/ci-cd-pipeline.png)
+
+#### 9 — 8 Passing Cargo Test Unit Tests Output
+![Cargo Test Output](./public/screenshots/cargo-test-output.png)
 
 ---
 
