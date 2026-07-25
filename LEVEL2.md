@@ -16,7 +16,7 @@
 | **README with setup instructions** | ✅ Done | Included in `README.md` & `LEVEL2.md` |
 | **Minimum 2+ meaningful commits** | ✅ Done | Multiple structured commits on `level-2-yellow-belt` |
 | **Multi-Wallet Integration (StellarWalletsKit)** | ✅ Done | Multi-wallet modal supporting Freighter, LOBSTR, xBull, Albedo, Hana |
-| **Screenshot: Wallet options available** | ✅ Done | `public/screenshots/wallet-options.svg` |
+| **Screenshot: Wallet options available** | ✅ Done | `public/screenshots/wallet-options.png` |
 | **Contract Deployed on Testnet** | ✅ Done | `CDZCTLFFN5SM6UC3Z46UPHV6BI2GYVJ65GCAOHNVSCMGBWX4GYD4UZXF` |
 | **Contract Called from Frontend** | ✅ Done | Reads question & tallies, checks `has_voted`, executes `vote()` |
 | **Transaction Hash of Contract Call** | ✅ Done | [`962277ffe98c620f83bfbd5c165466a0dc1105a97b165c287145166b6f4e2270`](https://stellar.expert/explorer/testnet/tx/962277ffe98c620f83bfbd5c165466a0dc1105a97b165c287145166b6f4e2270) |
@@ -54,7 +54,7 @@
 ### 1 — Wallet Options Available (StellarWalletsKit Multi-Wallet Modal)
 Shows the multi-wallet picker modal with options for **Freighter**, **LOBSTR**, **xBull**, **Albedo**, and **Hana Wallet**.
 
-![Wallet Options Available](./public/screenshots/wallet-options.svg)
+![Wallet Options Available](./public/screenshots/wallet-options.png)
 
 ---
 

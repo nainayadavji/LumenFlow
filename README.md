@@ -45,7 +45,7 @@ Focus: Multi-wallet integration, Soroban smart contract deployment, transaction 
 | Requirement | Status | Verification |
 | --- | --- | --- |
 | Multi-wallet integration | ✅ Done | `StellarWalletsKit` (Freighter, LOBSTR, xBull, Albedo, Hana) |
-| Screenshot of wallet options | ✅ Done | `public/screenshots/wallet-options.svg` |
+| Screenshot of wallet options | ✅ Done | `public/screenshots/wallet-options.png` |
 | Smart contract deployed on Testnet | ✅ Done | Contract ID: `CDZCTLFFN5SM6UC3Z46UPHV6BI2GYVJ65GCAOHNVSCMGBWX4GYD4UZXF` |
 | Contract called from frontend | ✅ Done | Reads question/tallies, checks `has_voted`, executes `vote()` |
 | Transaction hash of contract call | ✅ Done | [`962277ffe98c620f83bfbd5c165466a0dc1105a97b165c287145166b6f4e2270`](https://stellar.expert/explorer/testnet/tx/962277ffe98c620f83bfbd5c165466a0dc1105a97b165c287145166b6f4e2270) |
@@ -74,25 +74,31 @@ Focus: Multi-wallet integration, Soroban smart contract deployment, transaction 
 
 ---
 
-## 📸 Project Screenshots
+## 📸 Screenshots
 
-### 1 — Multi-Wallet Options Modal (StellarWalletsKit)
-![Multi-Wallet Options](./public/screenshots/wallet-options.svg)
+### 🥋 Level 1 — White Belt Screenshots
 
-### 2 — Soroban Live Poll Smart Contract UI
-![Live Poll Smart Contract](./public/screenshots/live-poll-contract.svg)
-
-### 3 — Real-Time Soroban Event Stream
-![Live Events Stream](./public/screenshots/live-events-stream.svg)
-
-### 4 — Merchant Cash Register & XLM Balance
+#### 1 — Wallet Connected & XLM Balance Displayed
 ![Wallet Connected and Balance](./public/screenshots/wallet%20connect%20and%20balance.png)
 
-### 5 — POS Payment Settled — Success UI
+#### 2 — Payment Settled — Success UI
 ![Transaction Success UI](./public/screenshots/transcation%20sucess%20ui.png)
 
-### 6 — Verified Transaction on Stellar Expert Explorer
+#### 3 — Live Transaction on Stellar Expert Explorer
 ![Transaction Explorer](./public/screenshots/transaction%20explorer.png)
+
+---
+
+### 🟡 Level 2 — Yellow Belt Screenshots
+
+#### 4 — Multi-Wallet Options Modal (StellarWalletsKit)
+![Multi-Wallet Options](./public/screenshots/wallet-options.png)
+
+#### 5 — Soroban Live Poll Smart Contract UI
+![Live Poll Smart Contract](./public/screenshots/live-poll-contract.png)
+
+#### 6 — Real-Time Soroban Event Stream
+![Live Events Stream](./public/screenshots/live-events-stream.png)
 
 ---
 
