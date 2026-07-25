@@ -86,7 +86,7 @@ cargo test
 ## 📸 Required Level 3 Screenshots
 
 ### 1 — Mobile Responsive UI (375px Viewport)
-![Mobile Responsive UI](./public/screenshots/mobile-responsive.png)
+![Mobile Responsive UI](./public/screenshots/image.png)
 
 ---
 

@@ -10,9 +10,9 @@ Features **StellarWalletsKit multi-wallet connection**, real-time **Horizon XLM 
 - ⚡ **Sample Vote Tx Hash:** [`962277ffe98c620f83bfbd5c165466a0dc1105a97b165c287145166b6f4e2270`](https://stellar.expert/explorer/testnet/tx/962277ffe98c620f83bfbd5c165466a0dc1105a97b165c287145166b6f4e2270)
 - 🥋 **Level 1:** [`LEVEL1.md`](./LEVEL1.md) | 🟡 **Level 2:** [`LEVEL2.md`](./LEVEL2.md) | 🟠 **Level 3:** [`LEVEL3.md`](./LEVEL3.md)
 
+[![CI/CD Pipeline](https://github.com/nainayadavji/LumenFlow/actions/workflows/ci.yml/badge.svg)](https://github.com/nainayadavji/LumenFlow/actions)
 ![Stellar](https://img.shields.io/badge/Stellar-Testnet-3b82f6)
 ![Soroban](https://img.shields.io/badge/Soroban-Smart_Contract-purple)
-![CI/CD](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-green)
 ![React](https://img.shields.io/badge/React-18-149eca)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5-3178c6)
 ![Vite](https://img.shields.io/badge/Vite-5-646cff)
@@ -242,7 +242,7 @@ export function WalletConnect() {
 ### 🟠 Level 3 — Orange Belt Screenshots
 
 #### 7 — Mobile Responsive UI View
-![Mobile Responsive UI](./public/screenshots/mobile-responsive.png)
+![Mobile Responsive UI](./public/screenshots/image.png)
 
 #### 8 — GitHub Actions CI/CD Pipeline Running
 ![CI/CD Pipeline Running](./public/screenshots/ci-cd-pipeline.png)
