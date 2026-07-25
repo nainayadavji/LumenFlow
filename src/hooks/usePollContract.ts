@@ -148,7 +148,11 @@ export function usePollContract(): PollContractState {
       } catch (err) {
         setTxState('error');
         const msg = err instanceof Error ? err.message : String(err);
-        setErrorMessage(msg);
+        if (msg.includes('Error(Contract, #2)') || msg.includes('#2') || msg.includes('AlreadyVoted')) {
+          setErrorMessage('Already Voted: Your address has already cast a vote in this poll.');
+        } else {
+          setErrorMessage(msg);
+        }
       }
     },
     [address, isConnected, hasVoted, signTransaction, refresh]

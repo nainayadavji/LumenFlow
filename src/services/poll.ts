@@ -134,8 +134,16 @@ export async function buildVoteTransaction(voterAddress: string, choice: boolean
     .build();
 
   // Prepare transaction (simulates footprint, auth, and fee limits)
-  const preparedTx = await rpcServer.prepareTransaction(rawTx);
-  return preparedTx.toXDR();
+  try {
+    const preparedTx = await rpcServer.prepareTransaction(rawTx);
+    return preparedTx.toXDR();
+  } catch (prepErr) {
+    const prepMsg = prepErr instanceof Error ? prepErr.message : String(prepErr);
+    if (prepMsg.includes('Error(Contract, #2)') || prepMsg.includes('#2') || prepMsg.includes('AlreadyVoted')) {
+      throw new Error('Already Voted: Your address has already cast a vote in this poll.');
+    }
+    throw prepErr;
+  }
 }
 
 /**
