@@ -6,7 +6,11 @@ function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-export function LandingPage() {
+interface LandingPageProps {
+  onExplorePoll?: () => void;
+}
+
+export function LandingPage({ onExplorePoll }: LandingPageProps) {
   const { connect, isConnecting, isInstalled } = useWallet();
 
   // POS Simulator State
@@ -147,6 +151,12 @@ export function LandingPage() {
           ) : (
             <Button size="lg" variant="primary" onClick={connect} isLoading={isConnecting}>
               Connect Wallet & Launch POS
+            </Button>
+          )}
+
+          {onExplorePoll && (
+            <Button size="lg" variant="secondary" onClick={onExplorePoll}>
+              Explore Soroban Poll 🔮
             </Button>
           )}
         </div>

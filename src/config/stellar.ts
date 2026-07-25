@@ -9,6 +9,10 @@
 export const STELLAR_CONFIG = {
   horizonUrl:
     import.meta.env.VITE_HORIZON_URL ?? 'https://horizon-testnet.stellar.org',
+  rpcUrl:
+    import.meta.env.VITE_SOROBAN_RPC_URL ?? 'https://soroban-testnet.stellar.org',
+  pollContractId:
+    import.meta.env.VITE_POLL_CONTRACT_ID ?? 'CDZCTLFFN5SM6UC3Z46UPHV6BI2GYVJ65GCAOHNVSCMGBWX4GYD4UZXF',
   networkPassphrase:
     import.meta.env.VITE_NETWORK_PASSPHRASE ??
     'Test SDF Network ; September 2015',
