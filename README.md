@@ -184,6 +184,58 @@ npm run lint
 
 ---
 
+## 📄 Smart Contract Deployment — Live Poll (Stellar Testnet)
+
+This section records the on-chain deployment of the Live Poll Soroban smart contract and shows how to reproduce it on **Stellar Testnet**.
+
+### 🔑 Deployment Facts
+
+| Item | Value |
+| ---- | ----- |
+| **Network** | Stellar **Testnet** |
+| **Network passphrase** | `Test SDF Network ; September 2015` |
+| **Soroban RPC** | `https://soroban-testnet.stellar.org` |
+| **Contract ID** | `CDZCTLFFN5SM6UC3Z46UPHV6BI2GYVJ65GCAOHNVSCMGBWX4GYD4UZXF` |
+| **Wasm hash** | `efa13f5c3a20a90f57c6473f2695d3d1d7c62aa4a78b008c3b0978c112bf3286` |
+| **Deployer account** | `GDI4GQSJKBRCWYWYQQG5DFSOLZJTRBW7A65N26M3NL7E3DOL5SND4OUN` |
+| **Poll question** | *"Is Soroban the future of smart contracts on Stellar?"* |
+
+### Transaction hashes
+
+| Purpose | Hash |
+| ------- | ---- |
+| **Wasm upload** | `c3746bf1b45058e2086017353fc27d79005ba8eb72308ce552867167260e3ae8` |
+| **Deploy + `__constructor`** | `8313f43dc7c773cecb0050794f330fe5467243e9e956d554c891a70cc25cf140` |
+| **Example vote** (`vote` → Yes) | `962277ffe98c620f83bfbd5c165466a0dc1105a97b165c287145166b6f4e2270` |
+
+### Explorer links
+
+- **Contract:** [View on Stellar Expert](https://stellar.expert/explorer/testnet/contract/CDZCTLFFN5SM6UC3Z46UPHV6BI2GYVJ65GCAOHNVSCMGBWX4GYD4UZXF)
+- **Deploy tx:** [View Deploy Tx](https://stellar.expert/explorer/testnet/tx/8313f43dc7c773cecb0050794f330fe5467243e9e956d554c891a70cc25cf140)
+- **Example vote tx:** [View Vote Tx](https://stellar.expert/explorer/testnet/tx/962277ffe98c620f83bfbd5c165466a0dc1105a97b165c287145166b6f4e2270)
+
+### 🛠️ Reproduce Contract Deployment
+
+```bash
+# 1. Build the contract
+cd contracts/poll-contract
+stellar contract build
+
+# 2. Optimize Wasm
+stellar contract optimize --wasm target/wasm32v1-none/release/poll_contract.wasm
+
+# 3. Deploy with question
+stellar contract deploy \
+  --wasm target/wasm32v1-none/release/poll_contract.optimized.wasm \
+  --source-account deployer \
+  --network testnet \
+  --alias poll_contract \
+  -- \
+  --question "Is Soroban the future of smart contracts on Stellar?"
+```
+
+---
+
 ## 📸 Screenshots
 
 **Multi-Wallet Options Available (StellarWalletsKit)**
