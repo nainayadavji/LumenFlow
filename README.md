@@ -6,6 +6,7 @@ A clean, premium **Web3 Point-of-Sale Register & Soroban Governance Poll dApp** 
 Features **StellarWalletsKit multi-wallet connection**, real-time **Horizon XLM payment settlements**, an **on-chain Soroban smart contract poll** with real-time event streaming via Soroban RPC, **GitHub Actions CI/CD pipeline**, and **mobile-responsive UI**. Built with **React 18 + Vite 5 + TypeScript + Tailwind CSS**, **Soroban SDK (Rust)**, and `@stellar/stellar-sdk`.
 
 - 🔗 **GitHub Repository:** [github.com/nainayadavji/LumenFlow](https://github.com/nainayadavji/LumenFlow)
+- 🎥 **Demo Presentation Video:** [Watch on YouTube ↗](https://youtu.be/04Lb0mRq4Ac)
 - 🔮 **Deployed Soroban Contract ID:** `CDZCTLFFN5SM6UC3Z46UPHV6BI2GYVJ65GCAOHNVSCMGBWX4GYD4UZXF`
 - ⚡ **Sample Vote Tx Hash:** [`962277ffe98c620f83bfbd5c165466a0dc1105a97b165c287145166b6f4e2270`](https://stellar.expert/explorer/testnet/tx/962277ffe98c620f83bfbd5c165466a0dc1105a97b165c287145166b6f4e2270)
 - 🥋 **Level 1:** [`LEVEL1.md`](./LEVEL1.md) | 🟡 **Level 2:** [`LEVEL2.md`](./LEVEL2.md) | 🟠 **Level 3:** [`LEVEL3.md`](./LEVEL3.md)

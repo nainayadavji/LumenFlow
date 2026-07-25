@@ -26,7 +26,7 @@
 | **Screenshot: Mobile Responsive UI** | ✅ Done | `public/screenshots/mobile-responsive.png` |
 | **Screenshot: CI/CD Pipeline Running** | ✅ Done | `public/screenshots/ci-cd-pipeline.png` |
 | **Screenshot: 3+ Passing Tests Output** | ✅ Done | `public/screenshots/cargo-test-output.png` |
-| **Demo Video Presentation Script** | ✅ Done | 1-2 minute video outline documented below |
+| **Demo Video Link (1–2 minutes)** | ✅ Done | [Watch Demo Presentation on YouTube ↗](https://youtu.be/04Lb0mRq4Ac) |
 
 ---
 
@@ -100,9 +100,11 @@ cargo test
 
 ---
 
-## 🎥 1–2 Minute Demo Video Presentation Outline
+## 🎥 1–2 Minute Demo Video Presentation
 
-1. **0:00 – 0:25: Introduction & Multi-Wallet Setup**
+▶️ **Watch on YouTube:** [https://youtu.be/04Lb0mRq4Ac](https://youtu.be/04Lb0mRq4Ac)
+
+### Presentation Outline:
    - Introduce **LumenLink POS & Soroban Governance Poll**.
    - Show `StellarWalletsKit` multi-wallet picker modal (Freighter, LOBSTR, xBull, Albedo, Hana).
 2. **0:25 – 0:50: Merchant POS Register (Level 1 & 2)**
