@@ -1,8 +1,13 @@
-# 🛒 LumenLink POS — Web3 Point-of-Sale Register
+# 🛒 LumenLink POS & Soroban Live Poll — Level 2 (Yellow Belt)
 
-> **Rise In · Stellar Journey to Mastery — Level 1 (White Belt) Submission**
+> **Rise In · Stellar Journey to Mastery — Level 2 (Yellow Belt) Submission**
 
-A clean, premium **Web3 Point-of-Sale register app** for physical retail shops. It lets you connect the **Freighter** wallet, monitor register cash balances, fund new registers via **Friendbot**, and settle client payments — all on the **Stellar Testnet**. Built with **React + Vite + TypeScript + Tailwind CSS** and the official **Stellar SDK**.
+A clean, premium **Web3 Point-of-Sale Register & Soroban Governance Poll dApp**.
+Features **StellarWalletsKit multi-wallet connection**, real-time **Horizon XLM payment settlements**, and an **on-chain Soroban smart contract poll** with real-time event streaming via RPC on **Stellar Testnet**. Built with **React + Vite + TypeScript + Tailwind CSS**, **Soroban SDK (Rust)**, and `@stellar/stellar-sdk`.
+
+- **Deployed Contract ID:** `CDZCTLFFN5SM6UC3Z46UPHV6BI2GYVJ65GCAOHNVSCMGBWX4GYD4UZXF`
+- **Sample Vote Tx Hash:** [`962277ffe98c620f83bfbd5c165466a0dc1105a97b165c287145166b6f4e2270`](https://stellar.expert/explorer/testnet/tx/962277ffe98c620f83bfbd5c165466a0dc1105a97b165c287145166b6f4e2270)
+- **Level 2 Summary & Checklist:** See [`LEVEL2.md`](./LEVEL2.md)
 
 ![Stellar](https://img.shields.io/badge/Stellar-Testnet-3b82f6)
 ![React](https://img.shields.io/badge/React-18-149eca)
@@ -180,6 +185,9 @@ npm run lint
 ---
 
 ## 📸 Screenshots
+
+**Multi-Wallet Options Available (StellarWalletsKit)**
+![Wallet Options Available](./public/screenshots/wallet-options.svg)
 
 **Wallet Connected & XLM Balance**
 ![Wallet Connected and Balance](./public/screenshots/wallet%20connect%20and%20balance.png)
