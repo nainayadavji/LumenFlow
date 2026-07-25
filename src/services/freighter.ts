@@ -131,6 +131,16 @@ export async function signWithFreighter(
   return result.signedTxXdr;
 }
 
+export async function signTx(xdr: string, networkPassphrase?: string): Promise<string> {
+  const result = await signTransaction(xdr, {
+    networkPassphrase: networkPassphrase || STELLAR_CONFIG.networkPassphrase,
+  });
+  if (result.error) {
+    throw new Error(normalizeFreighterError(result.error));
+  }
+  return result.signedTxXdr;
+}
+
 /**
  * Watch Freighter for account / network changes and invoke `onChange` whenever
  * the active address changes. Freighter polls in the background, so this keeps

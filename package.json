@@ -11,6 +11,7 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "dependencies": {
+    "@creit-tech/stellar-wallets-kit": "npm:@jsr/creit-tech__stellar-wallets-kit@^2.5.0",
     "@creit.tech/stellar-wallets-kit": "^2.5.0",
     "@stellar/freighter-api": "^3.0.0",
     "@stellar/stellar-sdk": "^13.1.0",
