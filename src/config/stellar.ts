@@ -13,6 +13,8 @@ export const STELLAR_CONFIG = {
     import.meta.env.VITE_SOROBAN_RPC_URL ?? 'https://soroban-testnet.stellar.org',
   pollContractId:
     import.meta.env.VITE_POLL_CONTRACT_ID ?? 'CDZCTLFFN5SM6UC3Z46UPHV6BI2GYVJ65GCAOHNVSCMGBWX4GYD4UZXF',
+  payvaultContractId:
+    import.meta.env.VITE_PAYVAULT_CONTRACT_ID ?? 'CBAXVAULTDEMO555555555555555555555555555555555555555DEMO',
   networkPassphrase:
     import.meta.env.VITE_NETWORK_PASSPHRASE ??
     'Test SDF Network ; September 2015',
