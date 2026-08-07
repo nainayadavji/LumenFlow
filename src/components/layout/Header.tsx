@@ -5,8 +5,8 @@ import { NETWORK_LABEL } from '@/config/stellar';
 import { WalletConnect } from '@/components/wallet/WalletConnect';
 
 interface HeaderProps {
-  activeTab?: 'pos' | 'poll';
-  setActiveTab?: (tab: 'pos' | 'poll') => void;
+  activeTab?: 'pos' | 'poll' | 'payvault' | 'anchor' | 'analytics' | 'feedback';
+  setActiveTab?: (tab: 'pos' | 'poll' | 'payvault' | 'anchor' | 'analytics' | 'feedback') => void;
 }
 
 export function Header({ activeTab = 'pos', setActiveTab }: HeaderProps) {
@@ -34,7 +34,7 @@ export function Header({ activeTab = 'pos', setActiveTab }: HeaderProps) {
 
           {/* Navigation Tabs */}
           {setActiveTab && (
-            <nav className="hidden md:flex items-center gap-1.5 p-1 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold">
+            <nav className="hidden lg:flex items-center gap-1.5 p-1 rounded-xl bg-slate-900 border border-slate-800 text-xs font-semibold">
               <button
                 onClick={() => setActiveTab('pos')}
                 className={`px-3 py-1.5 rounded-lg transition ${
@@ -44,6 +44,46 @@ export function Header({ activeTab = 'pos', setActiveTab }: HeaderProps) {
                 }`}
               >
                 🛒 Merchant POS
+              </button>
+              <button
+                onClick={() => setActiveTab('payvault')}
+                className={`px-3 py-1.5 rounded-lg transition ${
+                  activeTab === 'payvault'
+                    ? 'bg-brand-500 text-white shadow'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                💰 PayVault
+              </button>
+              <button
+                onClick={() => setActiveTab('anchor')}
+                className={`px-3 py-1.5 rounded-lg transition ${
+                  activeTab === 'anchor'
+                    ? 'bg-brand-500 text-white shadow'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                ⚓ Anchor Out
+              </button>
+              <button
+                onClick={() => setActiveTab('analytics')}
+                className={`px-3 py-1.5 rounded-lg transition ${
+                  activeTab === 'analytics'
+                    ? 'bg-brand-500 text-white shadow'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                📊 Diagnostics
+              </button>
+              <button
+                onClick={() => setActiveTab('feedback')}
+                className={`px-3 py-1.5 rounded-lg transition ${
+                  activeTab === 'feedback'
+                    ? 'bg-brand-500 text-white shadow'
+                    : 'text-slate-400 hover:text-slate-200'
+                }`}
+              >
+                💬 Feedback
               </button>
               <button
                 onClick={() => setActiveTab('poll')}
@@ -63,13 +103,19 @@ export function Header({ activeTab = 'pos', setActiveTab }: HeaderProps) {
         <div className="flex items-center gap-3">
           {/* Mobile Tab Toggle */}
           {setActiveTab && (
-            <div className="flex md:hidden items-center gap-1 text-xs">
-              <button
-                onClick={() => setActiveTab(activeTab === 'pos' ? 'poll' : 'pos')}
-                className="px-2.5 py-1 rounded-lg border border-slate-800 bg-slate-900 text-slate-300 font-semibold"
+            <div className="flex lg:hidden items-center gap-1 text-xs">
+              <select
+                value={activeTab}
+                onChange={(e) => setActiveTab(e.target.value as any)}
+                className="px-2.5 py-1.5 rounded-lg border border-slate-800 bg-slate-900 text-slate-300 font-semibold outline-none"
               >
-                {activeTab === 'pos' ? '🔮 Poll' : '🛒 POS'}
-              </button>
+                <option value="pos">🛒 POS</option>
+                <option value="payvault">💰 PayVault</option>
+                <option value="anchor">⚓ Anchor Out</option>
+                <option value="analytics">📊 Diagnostics</option>
+                <option value="feedback">💬 Feedback</option>
+                <option value="poll">🔮 Poll</option>
+              </select>
             </div>
           )}
           <WalletConnect />
