@@ -2,6 +2,7 @@
  * Root application component. Composes the layout, navigation tabs, and features.
  */
 import { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { useWallet } from '@/context/WalletContext';
 import { Header } from '@/components/layout/Header';
 import { LandingPage } from '@/components/layout/LandingPage';
@@ -72,6 +73,7 @@ export default function App() {
       </div>
 
       <Footer />
+      <Analytics />
     </div>
   );
 }
