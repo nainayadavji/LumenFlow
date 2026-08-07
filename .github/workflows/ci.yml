@@ -2,14 +2,16 @@ name: Stellar dApp CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, level-3-orange-belt, level-2-yellow-belt ]
+    branches: [ main, level-4-green-belt, level-3-orange-belt, level-2-yellow-belt ]
   pull_request:
-    branches: [ main, level-3-orange-belt ]
+    branches: [ main, level-4-green-belt, level-3-orange-belt ]
 
 jobs:
   contract-tests:
     name: Soroban Smart Contract Tests & Build
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout code
@@ -45,13 +47,9 @@ jobs:
           cd ../payvault-contract
           cargo build --target wasm32v1-none --release
           
-          # Install Stellar CLI to optimize WASM
-          cargo install --locked stellar-cli --version 27.0.0
-          
-          # Optimize WASM
+          # Copy release WASM directly (already optimized via profile settings in Cargo.toml)
           mkdir -p ../../build
-          stellar contract optimize --wasm target/wasm32v1-none/release/payvault_contract.wasm
-          cp target/wasm32v1-none/release/payvault_contract.optimized.wasm ../../build/
+          cp target/wasm32v1-none/release/payvault_contract.wasm ../../build/payvault_contract.optimized.wasm
           
       - name: Commit Optimized WASM back to Repository
         run: |

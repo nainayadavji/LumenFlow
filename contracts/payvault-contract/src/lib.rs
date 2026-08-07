@@ -1,6 +1,6 @@
 #![no_std]
 use soroban_sdk::{
-    contract, contracterror, contractevent, contractimpl, contracttype, Address, Env,
+    contract, contracterror, contractevent, contractimpl, contracttype, Address, Env, Symbol,
 };
 
 const DAY_IN_LEDGERS: u32 = 17_280;
@@ -93,15 +93,12 @@ impl PayVaultContract {
         storage.set(&DataKey::LastTouchLedger(merchant.clone()), &current_ledger);
         storage.set(&DataKey::TotalYield(merchant.clone()), &state.total_harvested);
 
-        // Bump TTL to keep record active
-        storage.bump(&DataKey::Principal(merchant.clone()), BUMP_THRESHOLD, BUMP_AMOUNT);
-        storage.bump(&DataKey::LastTouchLedger(merchant.clone()), BUMP_THRESHOLD, BUMP_AMOUNT);
-        storage.bump(&DataKey::TotalYield(merchant.clone()), BUMP_THRESHOLD, BUMP_AMOUNT);
+        // Extend TTL to keep record active
+        storage.extend_ttl(&DataKey::Principal(merchant.clone()), BUMP_THRESHOLD, BUMP_AMOUNT);
+        storage.extend_ttl(&DataKey::LastTouchLedger(merchant.clone()), BUMP_THRESHOLD, BUMP_AMOUNT);
+        storage.extend_ttl(&DataKey::TotalYield(merchant.clone()), BUMP_THRESHOLD, BUMP_AMOUNT);
 
-        env.events().publish(
-            (env.clone(), VaultDeposit { merchant: merchant.clone(), amount, ledger: current_ledger }),
-            amount,
-        );
+        VaultDeposit { merchant: merchant.clone(), amount, ledger: current_ledger }.publish(&env);
 
         Ok(VaultState {
             principal: state.principal,
@@ -138,10 +135,7 @@ impl PayVaultContract {
         storage.set(&DataKey::LastTouchLedger(merchant.clone()), &current_ledger);
         storage.set(&DataKey::TotalYield(merchant.clone()), &state.total_harvested);
 
-        env.events().publish(
-            (env.clone(), VaultWithdrawal { merchant: merchant.clone(), amount, ledger: current_ledger }),
-            amount,
-        );
+        VaultWithdrawal { merchant: merchant.clone(), amount, ledger: current_ledger }.publish(&env);
 
         Ok(VaultState {
             principal: state.principal,
@@ -168,10 +162,7 @@ impl PayVaultContract {
             storage.set(&DataKey::LastTouchLedger(merchant.clone()), &current_ledger);
             storage.set(&DataKey::TotalYield(merchant.clone()), &state.total_harvested);
 
-            env.events().publish(
-                (env.clone(), YieldHarvested { merchant: merchant.clone(), amount: accrued, ledger: current_ledger }),
-                accrued,
-            );
+            YieldHarvested { merchant: merchant.clone(), amount: accrued, ledger: current_ledger }.publish(&env);
         }
 
         Ok(VaultState {
@@ -205,3 +196,5 @@ impl PayVaultContract {
         }
     }
 }
+
+mod test;
