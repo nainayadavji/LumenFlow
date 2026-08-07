@@ -7,6 +7,7 @@ import { createRoot } from 'react-dom/client';
 import App from '@/App';
 import { ToastProvider } from '@/context/ToastContext';
 import { WalletProvider } from '@/context/WalletContext';
+import { Analytics } from '@vercel/analytics/react';
 import '@/index.css';
 
 const rootEl = document.getElementById('root');
@@ -17,6 +18,7 @@ createRoot(rootEl).render(
     <ToastProvider>
       <WalletProvider>
         <App />
+        <Analytics />
       </WalletProvider>
     </ToastProvider>
   </StrictMode>
