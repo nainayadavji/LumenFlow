@@ -38,12 +38,28 @@ jobs:
           cd ../payvault-contract
           cargo test --verbose
 
-      - name: Build Soroban WASM Contract
+      - name: Build and Optimize Soroban WASM Contract
         run: |
           cd contracts/poll-contract
           cargo build --target wasm32v1-none --release
           cd ../payvault-contract
           cargo build --target wasm32v1-none --release
+          
+          # Install Stellar CLI to optimize WASM
+          cargo install --locked stellar-cli --version 27.0.0
+          
+          # Optimize WASM
+          mkdir -p ../../build
+          stellar contract optimize --wasm target/wasm32v1-none/release/payvault_contract.wasm
+          cp target/wasm32v1-none/release/payvault_contract.optimized.wasm ../../build/
+          
+      - name: Commit Optimized WASM back to Repository
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add build/payvault_contract.optimized.wasm
+          git diff-index --quiet HEAD || git commit -m "chore: upload compiled payvault_contract optimized WASM"
+          git push
 
   frontend-checks:
     name: Frontend Lint, Type-check & Production Build
