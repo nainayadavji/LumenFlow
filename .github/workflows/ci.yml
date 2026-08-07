@@ -35,10 +35,14 @@ jobs:
         run: |
           cd contracts/poll-contract
           cargo test --verbose
+          cd ../payvault-contract
+          cargo test --verbose
 
       - name: Build Soroban WASM Contract
         run: |
           cd contracts/poll-contract
+          cargo build --target wasm32v1-none --release
+          cd ../payvault-contract
           cargo build --target wasm32v1-none --release
 
   frontend-checks:
